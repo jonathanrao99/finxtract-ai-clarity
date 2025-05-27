@@ -46,33 +46,33 @@ export const LiveStats = () => {
 
   const stats = [
     {
-      value: `${counts.documents.toLocaleString()}+`,
+      value: `${counts.documents.toLocaleString()}K+`,
       label: "Documents Processed"
     },
     {
-      value: `${counts.users.toLocaleString()}+`,
-      label: "Active Users"
+      value: `${(counts.users / 1000).toFixed(1)}K+`,
+      label: "Users Worldwide"
     },
     {
-      value: `${counts.timeSaved} Minutes`,
-      label: "Saved Per File"
+      value: `${counts.timeSaved} min`,
+      label: "Saved/File"
     },
     {
       value: `${counts.accuracy}%`,
-      label: "Extraction Accuracy"
+      label: "Accuracy Rate"
     }
   ];
 
   return (
-    <section className="py-20 bg-[#111221] text-white">
+    <section className="py-20 bg-[#0A0B13]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
           {stats.map((stat, index) => (
             <div key={index} className="space-y-2">
-              <div className="text-4xl md:text-5xl font-bold text-[#84CC16]">
+              <div className="text-4xl md:text-5xl font-bold text-[#7FFF00] font-orbitron cyber-lime-glow">
                 {stat.value}
               </div>
-              <div className="text-lg text-gray-300">
+              <div className="text-lg text-[#B0B0B0] font-inter">
                 {stat.label}
               </div>
             </div>
@@ -80,8 +80,8 @@ export const LiveStats = () => {
         </div>
         
         <div className="text-center mt-8">
-          <p className="text-sm text-gray-400">
-            Real-time updates coming soon.
+          <p className="text-sm text-[#B0B0B0]">
+            Real-time updates coming soon
           </p>
         </div>
       </div>

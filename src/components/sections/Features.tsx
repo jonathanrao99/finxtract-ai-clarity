@@ -1,55 +1,47 @@
 
-import { Scan, Tag, GitMerge, Upload } from "lucide-react";
+import { Eye, Tag, GitMerge } from "lucide-react";
 
 export const Features = () => {
   const features = [
     {
-      icon: Scan,
-      title: "Smart OCR Hints",
-      description: "Highlight line-items as you hover with intelligent text recognition and extraction."
+      icon: Eye,
+      title: "Neon OCR Guidance",
+      description: "See live text-recognition highlights as you hover."
     },
     {
       icon: Tag,
-      title: "Auto-Categorization", 
-      description: "Automatically sort rent, utilities, payroll and more with AI-powered classification."
+      title: "Smart Categorization", 
+      description: "Auto-assign line-items: Rent, Supplies, Payroll, & more."
     },
     {
       icon: GitMerge,
-      title: "Reconciliation Engine",
-      description: "Match payments to statements automatically with our advanced reconciliation system."
-    },
-    {
-      icon: Upload,
-      title: "Bulk Upload & API",
-      description: "Drag & drop multiple files plus REST endpoint for seamless integration."
+      title: "Reconciliation AI",
+      description: "Instantly match payments to statements—no manual work."
     }
   ];
 
   return (
-    <section id="features" className="py-20 bg-white">
+    <section id="features" className="py-20 bg-[#0A0B13]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#111221] mb-4">
-            Powerful Features for Modern Accounting
+          <h2 className="text-3xl md:text-4xl font-bold text-[#F5F5F5] mb-4 font-orbitron tracking-wider">
+            Features Showcase
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Everything you need to transform your document processing workflow
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {features.map((feature, index) => (
             <div 
               key={index}
-              className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 group"
+              className="glass-card p-8 rounded-lg hover:neon-glow transition-all duration-300 group transform hover:scale-105"
             >
-              <div className="w-12 h-12 bg-[#007BFF] rounded-lg flex items-center justify-center mb-4 group-hover:bg-[#0056b3] transition-colors">
-                <feature.icon className="w-6 h-6 text-white" />
+              <div className="w-16 h-16 bg-[#00E5FF]/20 border border-[#00E5FF] rounded-lg flex items-center justify-center mb-6 group-hover:cyber-lime-glow transition-all duration-300">
+                <feature.icon className="w-8 h-8 text-[#00E5FF] group-hover:text-[#7FFF00]" />
               </div>
-              <h3 className="text-xl font-bold text-[#111221] mb-2">
+              <h3 className="text-xl font-bold text-[#F5F5F5] mb-3 font-orbitron">
                 {feature.title}
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-[#B0B0B0] leading-relaxed font-inter">
                 {feature.description}
               </p>
             </div>

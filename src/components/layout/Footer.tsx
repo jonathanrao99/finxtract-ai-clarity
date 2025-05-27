@@ -1,58 +1,28 @@
 
 export const Footer = () => {
-  const footerSections = [
-    {
-      title: "Product",
-      links: ["Features", "Pricing", "API", "Status"]
-    },
-    {
-      title: "Company", 
-      links: ["About", "Careers", "Press", "Blog"]
-    },
-    {
-      title: "Resources",
-      links: ["Help Center", "Documentation", "Security", "GDPR"]
-    },
-    {
-      title: "Contact",
-      links: ["Email", "Twitter", "LinkedIn", "GitHub"]
-    }
-  ];
+  const links = ["Home", "Features", "Pricing", "API Docs"];
 
   return (
-    <footer className="bg-[#111221] text-gray-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {footerSections.map((section, index) => (
-            <div key={index}>
-              <h3 className="text-white font-semibold mb-4">{section.title}</h3>
-              <ul className="space-y-2">
-                {section.links.map((link, linkIndex) => (
-                  <li key={linkIndex}>
-                    <a
-                      href="#"
-                      className="text-gray-400 hover:text-white transition-colors text-sm"
-                    >
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <div className="text-sm text-gray-400">
-            © 2025 FinXtract • All rights reserved
+    <footer className="bg-[#0A0B13] border-t border-[#00E5FF]/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="text-center space-y-4">
+          <div className="flex justify-center space-x-8">
+            {links.map((link, index) => (
+              <a
+                key={index}
+                href="#"
+                className="text-[#B0B0B0] hover:text-[#00E5FF] transition-colors text-sm font-inter"
+              >
+                {link}
+              </a>
+            ))}
           </div>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="text-sm text-gray-400 hover:text-white transition-colors">
-              Terms
-            </a>
-            <a href="#" className="text-sm text-gray-400 hover:text-white transition-colors">
-              Privacy
-            </a>
+          
+          <div className="text-sm text-[#B0B0B0] font-inter">
+            © 2025 FinXtract • 
+            <a href="#" className="hover:text-[#00E5FF] transition-colors ml-1">Terms</a>
+            <span className="mx-1">·</span>
+            <a href="#" className="hover:text-[#00E5FF] transition-colors">Privacy</a>
           </div>
         </div>
       </div>
