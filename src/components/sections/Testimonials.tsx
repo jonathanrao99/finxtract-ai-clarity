@@ -27,7 +27,7 @@ export const Testimonials = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % testimonials.length);
-    }, 6000);
+    }, 5000);
 
     return () => clearInterval(timer);
   }, [testimonials.length]);
@@ -41,35 +41,32 @@ export const Testimonials = () => {
   };
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-[#F4F8FF]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1E1E1E] mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#111221] mb-4">
             What Our Users Say
           </h2>
-          <p className="text-xl text-[#6B6B6B]">
-            Real feedback from real customers
-          </p>
         </div>
 
         <div className="relative">
-          <div className="bg-white rounded-lg shadow-lg p-8 mx-8 border border-gray-100">
-            <div className="flex justify-center mb-6">
+          <div className="bg-white rounded-lg shadow-lg p-8 mx-8">
+            <div className="flex justify-center mb-4">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-5 h-5 text-[#007BFF] fill-current" />
+                <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
               ))}
             </div>
             
-            <blockquote className="text-xl text-[#1E1E1E] text-center mb-6 leading-relaxed italic">
+            <blockquote className="text-xl text-gray-700 text-center mb-6 leading-relaxed">
               "{testimonials[currentSlide].quote}"
             </blockquote>
             
             <div className="text-center">
-              <div className="w-12 h-12 bg-[#007BFF]/10 rounded-full mx-auto mb-3"></div>
-              <div className="font-semibold text-[#1E1E1E]">
+              <div className="w-12 h-12 bg-gray-200 rounded-full mx-auto mb-3"></div>
+              <div className="font-semibold text-[#111221]">
                 {testimonials[currentSlide].name}
               </div>
-              <div className="text-[#6B6B6B]">
+              <div className="text-gray-600">
                 {testimonials[currentSlide].role}
               </div>
             </div>
@@ -79,7 +76,7 @@ export const Testimonials = () => {
             variant="outline"
             size="icon"
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-50 border-gray-200"
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-50"
           >
             <ChevronLeft className="w-4 h-4" />
           </Button>
@@ -88,7 +85,7 @@ export const Testimonials = () => {
             variant="outline"
             size="icon"
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-50 border-gray-200"
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-50"
           >
             <ChevronRight className="w-4 h-4" />
           </Button>

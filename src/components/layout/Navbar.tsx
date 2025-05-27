@@ -6,17 +6,15 @@ import { Menu, X } from "lucide-react";
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const menuItems = ["Home", "Features", "Pricing"];
+  const menuItems = ["Home", "Features", "Pricing", "Reviews", "Contact"];
 
   return (
-    <nav className="sticky top-0 z-50 bg-white border-b border-gray-200">
+    <nav className="sticky top-0 z-50 bg-[#111221] text-white border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-xl font-bold text-[#1E1E1E]">
-              Fin<span className="text-[#007BFF]">X</span>tract
-            </h1>
+            <h1 className="text-xl font-bold text-white">FinXtract</h1>
           </div>
 
           {/* Desktop Menu */}
@@ -26,7 +24,7 @@ export const Navbar = () => {
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="text-[#6B6B6B] hover:text-[#1E1E1E] px-3 py-2 text-sm font-medium transition-colors"
+                  className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors"
                 >
                   {item}
                 </a>
@@ -35,8 +33,14 @@ export const Navbar = () => {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex">
-            <Button className="bg-[#007BFF] hover:bg-[#0056b3] text-white font-medium">
+          <div className="hidden md:flex items-center space-x-4">
+            <Button variant="ghost" className="text-gray-300 hover:text-white">
+              Login
+            </Button>
+            <Button variant="ghost" className="text-gray-300 hover:text-white">
+              Sign Up
+            </Button>
+            <Button className="bg-[#84CC16] hover:bg-[#65A30D] text-black font-medium">
               Get Started
             </Button>
           </div>
@@ -47,42 +51,35 @@ export const Navbar = () => {
               variant="ghost"
               size="icon"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-[#6B6B6B] hover:text-[#1E1E1E]"
+              className="text-gray-300 hover:text-white"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </Button>
           </div>
         </div>
 
-        {/* Mobile Menu Overlay */}
+        {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden fixed inset-0 z-50 bg-white">
-            <div className="flex justify-between items-center h-16 px-4 border-b border-gray-200">
-              <h1 className="text-xl font-bold text-[#1E1E1E]">
-                Fin<span className="text-[#007BFF]">X</span>tract
-              </h1>
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setIsMenuOpen(false)}
-                className="text-[#6B6B6B] hover:text-[#1E1E1E]"
-              >
-                <X size={24} />
-              </Button>
-            </div>
-            <div className="px-4 py-8 space-y-6">
+          <div className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-800">
               {menuItems.map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="block text-2xl font-medium text-[#1E1E1E] hover:text-[#007BFF] transition-colors"
+                  className="text-gray-300 hover:text-white block px-3 py-2 text-sm font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item}
                 </a>
               ))}
-              <div className="pt-4">
-                <Button className="w-full bg-[#007BFF] hover:bg-[#0056b3] text-white font-medium">
+              <div className="pt-4 space-y-2">
+                <Button variant="ghost" className="w-full text-gray-300 hover:text-white">
+                  Login
+                </Button>
+                <Button variant="ghost" className="w-full text-gray-300 hover:text-white">
+                  Sign Up
+                </Button>
+                <Button className="w-full bg-[#84CC16] hover:bg-[#65A30D] text-black font-medium">
                   Get Started
                 </Button>
               </div>
