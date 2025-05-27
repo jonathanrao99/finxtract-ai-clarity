@@ -4,26 +4,16 @@ import { Upload, Eye, CheckCircle, Download } from "lucide-react";
 
 export const Hero = () => {
   const workflowSteps = [
-    { icon: Upload, label: "Upload" },
-    { icon: Eye, label: "AI Insight" },
-    { icon: CheckCircle, label: "Approve" },
-    { icon: Download, label: "Export" }
+    { icon: Upload, label: "Upload Documents" },
+    { icon: Eye, label: "AI Extraction & OCR Hints" },
+    { icon: CheckCircle, label: "Review & Categorize" },
+    { icon: Download, label: "Download Excel/CSV/PDF" }
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-[#0A0B13] overflow-hidden">
-      {/* Animated particles background */}
-      <div className="absolute inset-0">
-        <div className="particle absolute top-20 left-20 w-2 h-2 bg-[#00E5FF] rounded-full opacity-30"></div>
-        <div className="particle absolute top-40 right-32 w-1 h-1 bg-[#7FFF00] rounded-full opacity-40"></div>
-        <div className="particle absolute bottom-32 left-40 w-3 h-3 bg-[#00E5FF] rounded-full opacity-20"></div>
-        <div className="particle absolute bottom-20 right-20 w-2 h-2 bg-[#7FFF00] rounded-full opacity-30"></div>
-        <div className="particle absolute top-60 left-60 w-1 h-1 bg-[#00E5FF] rounded-full opacity-50"></div>
-        <div className="particle absolute top-80 right-60 w-2 h-2 bg-[#7FFF00] rounded-full opacity-25"></div>
-      </div>
-
-      {/* Gradient wave background */}
-      <div className="absolute inset-0 opacity-5">
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-[#111221] via-[#1a1b3a] to-[#2d2d5f] text-white overflow-hidden">
+      {/* Abstract SVG Background */}
+      <div className="absolute inset-0 opacity-10">
         <svg className="w-full h-full" viewBox="0 0 1200 800" fill="none">
           <path
             d="M0,300 Q300,100 600,250 T1200,200 L1200,800 L0,800 Z"
@@ -35,12 +25,12 @@ export const Hero = () => {
           />
           <defs>
             <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#00E5FF" />
-              <stop offset="100%" stopColor="#7FFF00" />
+              <stop offset="0%" stopColor="#007BFF" />
+              <stop offset="100%" stopColor="#84CC16" />
             </linearGradient>
             <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#7FFF00" />
-              <stop offset="100%" stopColor="#00E5FF" />
+              <stop offset="0%" stopColor="#84CC16" />
+              <stop offset="100%" stopColor="#007BFF" />
             </linearGradient>
           </defs>
         </svg>
@@ -48,44 +38,45 @@ export const Hero = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight tracking-wider font-orbitron neon-text">
-            AI-Driven Extraction,{" "}
-            <span className="text-[#7FFF00]">Redefined for Tomorrow</span>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight tracking-tight">
+            One-Click AI Extraction: Your Bills & Statements,{" "}
+            <span className="text-[#007BFF]">Perfectly Structured</span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-[#B0B0B0] mb-8 max-w-3xl mx-auto leading-relaxed font-inter">
-            Upload invoices, receipts, statements—get back Excel, CSV, or PDF in one click.
+          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+            Upload PDFs, images or scans. Instantly get Excel, CSV or PDF exports with OCR hints, 
+            categorization, and auto-reconciliation.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Button 
               size="lg" 
-              className="bg-[#00E5FF] hover:bg-[#00E5FF]/80 text-[#0A0B13] font-semibold px-8 py-3 text-lg hover:neon-glow transition-all duration-300 transform hover:scale-105"
+              className="bg-[#84CC16] hover:bg-[#65A30D] text-black font-semibold px-8 py-3 text-lg"
             >
               Try 3 Free Scans
             </Button>
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-[#00E5FF] text-[#00E5FF] hover:bg-[#00E5FF]/10 hover:text-[#00E5FF] px-8 py-3 text-lg hover:neon-glow transition-all duration-300"
+              className="border-[#007BFF] text-[#007BFF] hover:bg-[#007BFF] hover:text-white px-8 py-3 text-lg"
             >
-              See It in Action
+              Watch Demo
             </Button>
           </div>
 
           {/* Workflow Steps */}
-          <div className="flex justify-center items-center space-x-8 max-w-2xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {workflowSteps.map((step, index) => (
-              <div key={index} className="flex items-center">
-                <div className="flex flex-col items-center space-y-2">
-                  <div className="w-12 h-12 bg-[#00E5FF]/20 border border-[#00E5FF] rounded-full flex items-center justify-center hover:neon-glow transition-all duration-300">
-                    <step.icon className="w-6 h-6 text-[#00E5FF]" />
-                  </div>
-                  <div className="text-xs text-[#B0B0B0] font-medium">{step.label}</div>
+              <div key={index} className="flex flex-col items-center space-y-3">
+                <div className="w-16 h-16 bg-[#007BFF] rounded-full flex items-center justify-center">
+                  <step.icon className="w-8 h-8 text-white" />
                 </div>
-                {index < workflowSteps.length - 1 && (
-                  <div className="w-8 h-px bg-gradient-to-r from-[#00E5FF] to-[#7FFF00] mx-4 opacity-50"></div>
-                )}
+                <div className="text-center">
+                  <div className="text-sm text-[#007BFF] font-semibold mb-1">
+                    Step {index + 1}
+                  </div>
+                  <div className="text-sm text-gray-300">{step.label}</div>
+                </div>
               </div>
             ))}
           </div>

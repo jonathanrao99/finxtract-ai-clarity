@@ -9,52 +9,64 @@ export const Pricing = () => {
   const plans = [
     {
       name: "Basic",
-      monthlyPrice: 9.99,
-      yearlyPrice: 99,
+      subtitle: "For freelancers",
+      monthlyPrice: 19,
+      yearlyPrice: 190,
       features: [
         "50 pages/month",
-        "OCR guidance & categorization",
-        "Email support"
+        "OCR hints & basic categorization",
+        "Email support",
+        "Basic export formats"
       ]
     },
     {
       name: "Pro",
-      monthlyPrice: 24.99,
-      yearlyPrice: 249,
+      subtitle: "Most Popular",
+      monthlyPrice: 49,
+      yearlyPrice: 490,
       popular: true,
       features: [
         "500 pages/month",
-        "All Basic + reconciliation & bulk upload",
-        "Priority chat & email"
+        "All Basic features",
+        "Auto-reconciliation & bulk upload",
+        "Priority email & chat support",
+        "Advanced categorization"
       ]
     },
     {
       name: "Enterprise",
+      subtitle: "Custom pricing",
       custom: true,
       features: [
-        "Unlimited pages + API access",
-        "Dedicated account team & SLA"
+        "Unlimited pages",
+        "API access",
+        "Dedicated account manager",
+        "SLA & compliance features",
+        "Custom integrations"
       ]
     }
   ];
 
   return (
-    <section id="pricing" className="py-20 bg-[#0A0B13]">
+    <section id="pricing" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#F5F5F5] mb-4 font-orbitron tracking-wider">
-            Pricing
+          <h2 className="text-3xl md:text-4xl font-bold text-[#111221] mb-4">
+            Simple, Transparent Pricing
           </h2>
+          <p className="text-xl text-gray-600 mb-8">
+            Choose the plan that fits your needs
+          </p>
 
           {/* Billing Toggle */}
           <div className="flex items-center justify-center space-x-4 mb-8">
-            <span className={`text-sm font-inter ${!isYearly ? 'text-[#F5F5F5] font-semibold' : 'text-[#B0B0B0]'}`}>
+            <span className={`text-sm ${!isYearly ? 'text-[#111221] font-semibold' : 'text-gray-500'}`}>
               Monthly
             </span>
             <button
               onClick={() => setIsYearly(!isYearly)}
               className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                isYearly ? 'bg-[#00E5FF] neon-glow' : 'bg-[#B0B0B0]/20'
+                isYearly ? 'bg-[#007BFF]' : 'bg-gray-200'
               }`}
             >
               <span
@@ -63,7 +75,7 @@ export const Pricing = () => {
                 }`}
               />
             </button>
-            <span className={`text-sm font-inter ${isYearly ? 'text-[#F5F5F5] font-semibold' : 'text-[#B0B0B0]'}`}>
+            <span className={`text-sm ${isYearly ? 'text-[#111221] font-semibold' : 'text-gray-500'}`}>
               Yearly
             </span>
           </div>
@@ -73,33 +85,34 @@ export const Pricing = () => {
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`glass-card rounded-lg p-8 relative transition-all duration-300 ${
-                plan.popular ? 'border-[#00E5FF] neon-glow scale-105' : 'border-[#00E5FF]/20 hover:neon-glow'
+              className={`bg-white rounded-lg shadow-lg p-8 relative ${
+                plan.popular ? 'ring-2 ring-[#007BFF] scale-105' : 'border border-gray-200'
               }`}
             >
               {plan.popular && (
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-[#00E5FF] text-[#0A0B13] px-4 py-1 rounded-full text-sm font-semibold cyber-lime-glow animate-pulse">
+                  <span className="bg-[#007BFF] text-white px-4 py-1 rounded-full text-sm font-semibold">
                     Most Popular
                   </span>
                 </div>
               )}
 
               <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-[#F5F5F5] mb-4 font-orbitron">
+                <h3 className="text-2xl font-bold text-[#111221] mb-2">
                   {plan.name}
                 </h3>
+                <p className="text-gray-600 mb-4">{plan.subtitle}</p>
                 
                 {plan.custom ? (
-                  <div className="text-3xl font-bold text-[#7FFF00] font-orbitron">
+                  <div className="text-3xl font-bold text-[#111221]">
                     Custom
                   </div>
                 ) : (
                   <div>
-                    <span className="text-4xl font-bold text-[#7FFF00] font-orbitron">
+                    <span className="text-4xl font-bold text-[#111221]">
                       ${isYearly ? plan.yearlyPrice : plan.monthlyPrice}
                     </span>
-                    <span className="text-[#B0B0B0] font-inter">
+                    <span className="text-gray-600">
                       /{isYearly ? 'year' : 'month'}
                     </span>
                   </div>
@@ -109,18 +122,18 @@ export const Pricing = () => {
               <ul className="space-y-4 mb-8">
                 {plan.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-start">
-                    <Check className="w-5 h-5 text-[#7FFF00] mr-3 mt-0.5 flex-shrink-0" />
-                    <span className="text-[#B0B0B0] font-inter">{feature}</span>
+                    <Check className="w-5 h-5 text-[#84CC16] mr-3 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-700">{feature}</span>
                   </li>
                 ))}
               </ul>
 
               <Button
-                className={`w-full font-semibold transition-all duration-300 ${
+                className={`w-full ${
                   plan.popular
-                    ? 'bg-[#00E5FF] hover:bg-[#00E5FF]/80 text-[#0A0B13] hover:neon-glow'
-                    : 'bg-[#7FFF00] hover:bg-[#7FFF00]/80 text-[#0A0B13] hover:cyber-lime-glow'
-                } transform hover:scale-105`}
+                    ? 'bg-[#007BFF] hover:bg-[#0056b3]'
+                    : 'bg-[#84CC16] hover:bg-[#65A30D]'
+                } text-white font-semibold`}
               >
                 {plan.custom ? 'Contact Sales' : 'Get Started'}
               </Button>
@@ -129,8 +142,8 @@ export const Pricing = () => {
         </div>
 
         <div className="text-center mt-8">
-          <p className="text-sm text-[#B0B0B0] font-inter">
-            New users receive 3 free scans upon sign-up.
+          <p className="text-sm text-gray-500">
+            First-time users get 3 free scans when you sign up.
           </p>
         </div>
       </div>

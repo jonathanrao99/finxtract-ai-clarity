@@ -6,17 +6,15 @@ import { Menu, X } from "lucide-react";
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const menuItems = ["Home", "Features", "Pricing"];
+  const menuItems = ["Home", "Features", "Pricing", "Reviews", "Contact"];
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#0A0B13]/80 backdrop-blur-md border-b border-[#00E5FF]/10">
+    <nav className="sticky top-0 z-50 bg-[#111221] text-white border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-xl font-bold font-orbitron text-[#F5F5F5]">
-              Fin<span className="text-[#00E5FF] neon-text">X</span>tract
-            </h1>
+            <h1 className="text-xl font-bold text-white">FinXtract</h1>
           </div>
 
           {/* Desktop Menu */}
@@ -26,7 +24,7 @@ export const Navbar = () => {
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="text-[#B0B0B0] hover:text-[#00E5FF] px-3 py-2 text-sm font-medium transition-colors hover:neon-glow"
+                  className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors"
                 >
                   {item}
                 </a>
@@ -35,8 +33,14 @@ export const Navbar = () => {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex items-center">
-            <Button className="bg-[#7FFF00] hover:bg-[#7FFF00]/80 text-[#0A0B13] font-semibold hover:cyber-lime-glow transition-all duration-300 transform hover:scale-105">
+          <div className="hidden md:flex items-center space-x-4">
+            <Button variant="ghost" className="text-gray-300 hover:text-white">
+              Login
+            </Button>
+            <Button variant="ghost" className="text-gray-300 hover:text-white">
+              Sign Up
+            </Button>
+            <Button className="bg-[#84CC16] hover:bg-[#65A30D] text-black font-medium">
               Get Started
             </Button>
           </div>
@@ -47,7 +51,7 @@ export const Navbar = () => {
               variant="ghost"
               size="icon"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-[#B0B0B0] hover:text-[#00E5FF]"
+              className="text-gray-300 hover:text-white"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </Button>
@@ -57,19 +61,25 @@ export const Navbar = () => {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-[#00E5FF]/10">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-800">
               {menuItems.map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="text-[#B0B0B0] hover:text-[#00E5FF] block px-3 py-2 text-sm font-medium"
+                  className="text-gray-300 hover:text-white block px-3 py-2 text-sm font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item}
                 </a>
               ))}
-              <div className="pt-4">
-                <Button className="w-full bg-[#7FFF00] hover:bg-[#7FFF00]/80 text-[#0A0B13] font-semibold">
+              <div className="pt-4 space-y-2">
+                <Button variant="ghost" className="w-full text-gray-300 hover:text-white">
+                  Login
+                </Button>
+                <Button variant="ghost" className="w-full text-gray-300 hover:text-white">
+                  Sign Up
+                </Button>
+                <Button className="w-full bg-[#84CC16] hover:bg-[#65A30D] text-black font-medium">
                   Get Started
                 </Button>
               </div>
