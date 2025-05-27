@@ -9,41 +9,40 @@ export const Pricing = () => {
   const plans = [
     {
       name: "Basic",
-      subtitle: "For freelancers",
-      monthlyPrice: 19,
-      yearlyPrice: 190,
+      monthlyPrice: 9.99,
+      yearlyPrice: 99,
       features: [
         "50 pages/month",
-        "OCR hints & basic categorization",
-        "Email support",
-        "Basic export formats"
-      ]
+        "OCR previews & categorization",
+        "Email support"
+      ],
+      cta: "Get Started",
+      ctaVariant: "default" as const
     },
     {
       name: "Pro",
       subtitle: "Most Popular",
-      monthlyPrice: 49,
-      yearlyPrice: 490,
+      monthlyPrice: 24.99,
+      yearlyPrice: 249,
       popular: true,
       features: [
         "500 pages/month",
         "All Basic features",
-        "Auto-reconciliation & bulk upload",
-        "Priority email & chat support",
-        "Advanced categorization"
-      ]
+        "Reconciliation & bulk upload",
+        "Priority chat & email"
+      ],
+      cta: "Get Started",
+      ctaVariant: "default" as const
     },
     {
       name: "Enterprise",
-      subtitle: "Custom pricing",
       custom: true,
       features: [
-        "Unlimited pages",
-        "API access",
-        "Dedicated account manager",
-        "SLA & compliance features",
-        "Custom integrations"
-      ]
+        "Unlimited pages + API access",
+        "Dedicated account team & SLA"
+      ],
+      cta: "Contact Sales",
+      ctaVariant: "outline" as const
     }
   ];
 
@@ -51,16 +50,13 @@ export const Pricing = () => {
     <section id="pricing" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#111221] mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#1E1E1E] mb-8">
             Simple, Transparent Pricing
           </h2>
-          <p className="text-xl text-gray-600 mb-8">
-            Choose the plan that fits your needs
-          </p>
 
           {/* Billing Toggle */}
           <div className="flex items-center justify-center space-x-4 mb-8">
-            <span className={`text-sm ${!isYearly ? 'text-[#111221] font-semibold' : 'text-gray-500'}`}>
+            <span className={`text-sm ${!isYearly ? 'text-[#1E1E1E] font-semibold' : 'text-[#6B6B6B]'}`}>
               Monthly
             </span>
             <button
@@ -75,7 +71,7 @@ export const Pricing = () => {
                 }`}
               />
             </button>
-            <span className={`text-sm ${isYearly ? 'text-[#111221] font-semibold' : 'text-gray-500'}`}>
+            <span className={`text-sm ${isYearly ? 'text-[#1E1E1E] font-semibold' : 'text-[#6B6B6B]'}`}>
               Yearly
             </span>
           </div>
@@ -85,7 +81,7 @@ export const Pricing = () => {
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`bg-white rounded-lg shadow-lg p-8 relative ${
+              className={`bg-white rounded-lg shadow-lg p-8 relative transition-all duration-300 hover:shadow-xl ${
                 plan.popular ? 'ring-2 ring-[#007BFF] scale-105' : 'border border-gray-200'
               }`}
             >
@@ -98,21 +94,23 @@ export const Pricing = () => {
               )}
 
               <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-[#111221] mb-2">
+                <h3 className="text-2xl font-bold text-[#1E1E1E] mb-2">
                   {plan.name}
                 </h3>
-                <p className="text-gray-600 mb-4">{plan.subtitle}</p>
+                {plan.subtitle && (
+                  <p className="text-[#6B6B6B] mb-4">{plan.subtitle}</p>
+                )}
                 
                 {plan.custom ? (
-                  <div className="text-3xl font-bold text-[#111221]">
-                    Custom
+                  <div className="text-3xl font-bold text-[#1E1E1E]">
+                    Custom pricing
                   </div>
                 ) : (
                   <div>
-                    <span className="text-4xl font-bold text-[#111221]">
+                    <span className="text-4xl font-bold text-[#1E1E1E]">
                       ${isYearly ? plan.yearlyPrice : plan.monthlyPrice}
                     </span>
-                    <span className="text-gray-600">
+                    <span className="text-[#6B6B6B]">
                       /{isYearly ? 'year' : 'month'}
                     </span>
                   </div>
@@ -122,28 +120,29 @@ export const Pricing = () => {
               <ul className="space-y-4 mb-8">
                 {plan.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-start">
-                    <Check className="w-5 h-5 text-[#84CC16] mr-3 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">{feature}</span>
+                    <Check className="w-5 h-5 text-[#007BFF] mr-3 mt-0.5 flex-shrink-0" />
+                    <span className="text-[#6B6B6B]">{feature}</span>
                   </li>
                 ))}
               </ul>
 
               <Button
-                className={`w-full ${
-                  plan.popular
-                    ? 'bg-[#007BFF] hover:bg-[#0056b3]'
-                    : 'bg-[#84CC16] hover:bg-[#65A30D]'
-                } text-white font-semibold`}
+                className={`w-full font-semibold ${
+                  plan.ctaVariant === "outline"
+                    ? 'border-[#007BFF] text-[#007BFF] hover:bg-[#007BFF] hover:text-white'
+                    : 'bg-[#007BFF] hover:bg-[#0056b3] text-white'
+                }`}
+                variant={plan.ctaVariant}
               >
-                {plan.custom ? 'Contact Sales' : 'Get Started'}
+                {plan.cta}
               </Button>
             </div>
           ))}
         </div>
 
         <div className="text-center mt-8">
-          <p className="text-sm text-gray-500">
-            First-time users get 3 free scans when you sign up.
+          <p className="text-sm text-[#6B6B6B]">
+            First-time users receive 3 free scans upon sign-up.
           </p>
         </div>
       </div>

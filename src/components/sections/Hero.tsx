@@ -1,84 +1,49 @@
 
 import { Button } from "@/components/ui/button";
-import { Upload, Eye, CheckCircle, Download } from "lucide-react";
 
 export const Hero = () => {
-  const workflowSteps = [
-    { icon: Upload, label: "Upload Documents" },
-    { icon: Eye, label: "AI Extraction & OCR Hints" },
-    { icon: CheckCircle, label: "Review & Categorize" },
-    { icon: Download, label: "Download Excel/CSV/PDF" }
-  ];
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-[#111221] via-[#1a1b3a] to-[#2d2d5f] text-white overflow-hidden">
-      {/* Abstract SVG Background */}
-      <div className="absolute inset-0 opacity-10">
-        <svg className="w-full h-full" viewBox="0 0 1200 800" fill="none">
-          <path
-            d="M0,300 Q300,100 600,250 T1200,200 L1200,800 L0,800 Z"
-            fill="url(#gradient1)"
-          />
-          <path
-            d="M0,500 Q400,300 800,450 T1200,400 L1200,800 L0,800 Z"
-            fill="url(#gradient2)"
-          />
-          <defs>
-            <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#007BFF" />
-              <stop offset="100%" stopColor="#84CC16" />
-            </linearGradient>
-            <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#84CC16" />
-              <stop offset="100%" stopColor="#007BFF" />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
+    <section className="relative min-h-screen flex items-center bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div className="space-y-8">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1E1E1E] leading-tight tracking-tight">
+              One-Click AI Extraction for Your Bills & Statements
+            </h1>
+            
+            <p className="text-lg md:text-xl text-[#6B6B6B] leading-relaxed max-w-2xl">
+              Upload PDFs or scans. Instantly export Excel, CSV or PDF.
+            </p>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight tracking-tight">
-            One-Click AI Extraction: Your Bills & Statements,{" "}
-            <span className="text-[#007BFF]">Perfectly Structured</span>
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Upload PDFs, images or scans. Instantly get Excel, CSV or PDF exports with OCR hints, 
-            categorization, and auto-reconciliation.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button 
-              size="lg" 
-              className="bg-[#84CC16] hover:bg-[#65A30D] text-black font-semibold px-8 py-3 text-lg"
-            >
-              Try 3 Free Scans
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-[#007BFF] text-[#007BFF] hover:bg-[#007BFF] hover:text-white px-8 py-3 text-lg"
-            >
-              Watch Demo
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button 
+                size="lg" 
+                className="bg-[#007BFF] hover:bg-[#0056b3] text-white font-medium px-8 py-3 text-lg transition-all duration-200"
+              >
+                Try 3 Free Scans
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-[#6B6B6B] text-[#6B6B6B] hover:bg-[#6B6B6B] hover:text-white px-8 py-3 text-lg transition-all duration-200"
+              >
+                Watch Demo
+              </Button>
+            </div>
           </div>
 
-          {/* Workflow Steps */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-            {workflowSteps.map((step, index) => (
-              <div key={index} className="flex flex-col items-center space-y-3">
-                <div className="w-16 h-16 bg-[#007BFF] rounded-full flex items-center justify-center">
-                  <step.icon className="w-8 h-8 text-white" />
+          {/* Right Content - Placeholder for graphic/video */}
+          <div className="flex justify-center">
+            <div className="w-full max-w-md h-96 bg-gradient-to-br from-[#007BFF]/10 to-[#007BFF]/5 rounded-lg border border-[#007BFF]/20 flex items-center justify-center">
+              <div className="text-center text-[#6B6B6B]">
+                <div className="w-16 h-16 bg-[#007BFF]/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                  <div className="w-8 h-8 bg-[#007BFF] rounded-sm"></div>
                 </div>
-                <div className="text-center">
-                  <div className="text-sm text-[#007BFF] font-semibold mb-1">
-                    Step {index + 1}
-                  </div>
-                  <div className="text-sm text-gray-300">{step.label}</div>
-                </div>
+                <p className="text-sm">Upload & Download Flow</p>
+                <p className="text-xs">Demo Video Placeholder</p>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </div>
