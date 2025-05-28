@@ -1,73 +1,61 @@
-# Welcome to your Lovable project
+# FinXtract AI Clarity
 
-## Project info
+A Next.js app with Supabase auth, document processing via OpenAI, and Stripe billing.
 
-**URL**: https://lovable.dev/projects/d7821752-34dc-4246-a237-e50e0a4d9dd4
+## Features
 
-## How can I edit this code?
+- User authentication (email/password, magic links) via Supabase
+- Document upload & status via Supabase tables & RLS
+- OCR & data extraction via OpenAI function-calling (GPT-4O-mini)
+- Subscription billing with Stripe Checkout & webhooks
+- Tailwind CSS & shadcn-ui components
 
-There are several ways of editing your application.
+## Getting Started
 
-**Use Lovable**
+Clone the repo and install dependencies:
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/d7821752-34dc-4246-a237-e50e0a4d9dd4) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+```bash
 git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
 cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Environment Variables
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Create a `.env.local` file at the project root:
 
-**Use GitHub Codespaces**
+```
+NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+OPENAI_API_KEY=your-openai-key
+STRIPE_SECRET_KEY=your-stripe-secret-key
+STRIPE_WEBHOOK_SECRET=your-stripe-webhook-secret
+STRIPE_PRICE_BASIC=your-basic-plan-price-id
+STRIPE_PRICE_PRO=your-pro-plan-price-id
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## API Routes
 
-## What technologies are used for this project?
+- `POST /api/supabase/auth` – signIn/signUp/signOut/session
+- `POST /api/documents/upload` – upload new document URLs
+- `GET /api/documents/status/[id]` – check status/result
+- `POST /api/openai/extract` – proxy to OpenAI extraction
+- `POST /api/subscriptions/create-checkout` – create Stripe Checkout Session
+- `POST /api/subscriptions/webhook` – handle Stripe webhooks
 
-This project is built with:
+## Scripts
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- `npm run dev` – development server
+- `npm run build` – production build
+- `npm run start` – production start
+- `npm run lint` – run ESLint
 
-## How can I deploy this project?
+## Deployment
 
-Simply open [Lovable](https://lovable.dev/projects/d7821752-34dc-4246-a237-e50e0a4d9dd4) and click on Share -> Publish.
+Deploy to Vercel, Supabase Edge Functions, or your preferred platform. Ensure env vars are set in your deployment.
 
-## Can I connect a custom domain to my Lovable project?
+## License
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+MIT

@@ -1,13 +1,18 @@
 'use client';
 
 import { useState } from "react";
+import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const menuItems = ["Home", "Features", "Pricing", "Reviews", "Contact"];
+  const menuItems = [
+    { name: "Home", href: "/" },
+    { name: "Features", href: "/#features" },
+    { name: "Pricing", href: "/billing" },
+  ];
 
   return (
     <nav className="sticky top-0 z-50 bg-[#111221] text-white border-b border-gray-800">
@@ -22,28 +27,29 @@ export const Navbar = () => {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
               {menuItems.map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
+                <Link
+                  key={item.name}
+                  href={item.href}
                   className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors"
                 >
-                  {item}
-                </a>
+                  {item.name}
+                </Link>
               ))}
             </div>
           </div>
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost" className="text-gray-300 hover:text-white">
-              Login
-            </Button>
-            <Button variant="ghost" className="text-gray-300 hover:text-white">
-              Sign Up
-            </Button>
-            <Button className="bg-[#84CC16] hover:bg-[#65A30D] text-black font-medium">
-              Get Started
-            </Button>
+            <Link href="/login">
+              <Button variant="ghost" className="text-gray-300 hover:text-white">
+                Login
+              </Button>
+            </Link>
+            <Link href="/signup">
+              <Button className="bg-[#84CC16] hover:bg-[#65A30D] text-black font-medium">
+                Get Started
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -64,25 +70,26 @@ export const Navbar = () => {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-800">
               {menuItems.map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="text-gray-300 hover:text-white block px-3 py-2 text-sm font-medium"
+                <Link
+                  key={item.name}
+                  href={item.href}
                   onClick={() => setIsMenuOpen(false)}
+                  className="text-gray-300 hover:text-white block px-3 py-2 text-sm font-medium"
                 >
-                  {item}
-                </a>
+                  {item.name}
+                </Link>
               ))}
               <div className="pt-4 space-y-2">
-                <Button variant="ghost" className="w-full text-gray-300 hover:text-white">
-                  Login
-                </Button>
-                <Button variant="ghost" className="w-full text-gray-300 hover:text-white">
-                  Sign Up
-                </Button>
-                <Button className="w-full bg-[#84CC16] hover:bg-[#65A30D] text-black font-medium">
-                  Get Started
-                </Button>
+                <Link href="/login">
+                  <Button variant="ghost" className="w-full text-gray-300 hover:text-white">
+                    Login
+                  </Button>
+                </Link>
+                <Link href="/signup">
+                  <Button className="w-full bg-[#84CC16] hover:bg-[#65A30D] text-black font-medium">
+                    Get Started
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
