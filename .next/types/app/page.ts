@@ -1,4 +1,4 @@
-// File: D:\FinXtract\finxtract-ai-clarity\app\page.tsx
+// File: D:\FinXtract\Main\finxtract-ai-clarity\app\page.tsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
